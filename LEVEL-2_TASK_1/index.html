@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="heading">
+        <h2 class="animate-charcter"><b>Calculator</b></h2>
+    </div>
+    <div class="calc">
+        <div class="container">
+
+            <div class="display">
+                <input id="screen" type="text" placeholder="0">
+            </div>
+    
+            <div class="btns">
+                <div class="row">
+                    <button class="cbutton">(</button>
+                    <button class="cbutton">)</button>
+                    <button id="ce" onclick="backspc()"><b>CE</b></button>
+                    <button id="ac" onclick="screen.value=''"><b>AC</b></button>
+                    
+            
+                </div>
+    
+                <div class="row">
+                    <button onclick="squared()">x<sup>2</sup></button>
+                    <button onclick="squareroot()">√</button>
+                    <button onclick="percent()">%</button>
+                    <button class="cbutton">÷</button>
+                </div>
+    
+                <div class="row">
+                    
+                    <button class="cbutton">7</button>
+                    <button class="cbutton">8</button>
+                    <button class="cbutton">9</button>
+                    <button class="cbutton">×</button>
+                </div>
+    
+                <div class="row">
+                    
+                    <button class="cbutton">4</button>
+                    <button class="cbutton">5</button>
+                    <button class="cbutton">6</button>
+                    <button class="cbutton">+</button>
+                </div>
+    
+                <div class="row">
+                    
+                    <button class="cbutton">1</button>
+                    <button class="cbutton">2</button>
+                    <button class="cbutton">3</button>
+                    <button class="cbutton">-</button>
+                </div>
+
+                <div class="row">
+                    <button class="cbutton"><b>.</b></button>
+                    <button class="cbutton">0</button>
+                    <button onclick="plus_minus()">+/-</button>
+                    <button id="eval" onclick="screen.value=eval(screen.value)"><b>=</b></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    var screen = document.querySelector('#screen');
+var btn = document.querySelectorAll('.cbutton');
+for (item of btn) {
+        item.addEventListener('click', (e) => {
+            btntext = e.target.innerText;
+
+            if (btntext == '×') {
+                btntext = '*';
+            }
+
+            if (btntext == '÷') {
+                btntext = '/';
+            }
+            screen.value += btntext;
+        });
+}
+//Function to find sqroot
+function squareroot() {
+        screen.value = Math.sqrt(screen.value);
+}
+//Function to find square
+function squared() {
+    screen.value = Math.pow(screen.value, 2);
+}
+//Function to do backspace
+function backspc() {
+    screen.value = screen.value.substr(0, screen.value.length - 1);
+}
+//Function for Plus or Minus
+function plus_minus() {
+    screen.value = 0 - screen.value;
+}
+//Function to find Percent
+function percent(){
+    screen.value /= 100; 
+}
+</script>
+
+</html>
